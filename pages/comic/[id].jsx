@@ -28,28 +28,38 @@ const Comic = ({
 
       <Header />
       <main>
-        <section className="max-w-lg m-auto">
-          <h1 className="font-bold text-center">{title}</h1>
-          <Image width={width} height={height} src={img} alt={alt} />
+        <section className="max-w-lg mx-auto">
+          <h1 className="font-bold text-xl text-center mb-4">{title}</h1>
+          <div className="max-w-xs m-auto mb-4">
+            <Image
+              className="max-w-full h-auto"
+              width={width}
+              height={height}
+              src={img}
+              alt={alt}
+            />
+          </div>
           <p>{alt}</p>
-          {hasPrevious && (
-            <Link
-              className="text-blue-500 hover:text-blue-800"
-              href="/comic/[id]"
-              as={`/comic/${prevId}`}
-            >
-              Previous
-            </Link>
-          )}
-          {hasNext && (
-            <Link
-              className="text-blue-500 hover:text-blue-800"
-              href="/comic/[id]"
-              as={`/comic/${nextId}`}
-            >
-              Next
-            </Link>
-          )}
+          <div className="flex justify-between font-bold">
+            {hasPrevious && (
+              <Link
+                className="text-blue-500 hover:text-blue-800"
+                href="/comic/[id]"
+                as={`/comic/${prevId}`}
+              >
+                ⬅ Previous
+              </Link>
+            )}
+            {hasNext && (
+              <Link
+                className="text-blue-500 hover:text-blue-800"
+                href="/comic/[id]"
+                as={`/comic/${nextId}`}
+              >
+                Next ➡
+              </Link>
+            )}
+          </div>
         </section>
       </main>
     </>

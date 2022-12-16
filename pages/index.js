@@ -1,9 +1,11 @@
-import { Card, Container, Row, Text } from "@nextui-org/react";
 import Head from "next/head";
-import { Header } from "../components/Header";
-import fs from "fs/promises";
 import Link from "next/link";
 import Image from "next/image";
+
+import Footer from "components/Footer";
+import { Header } from "../components/Header";
+
+import fs from "node:fs/promises";
 
 export default function Home({ latestComics }) {
   return (
@@ -40,6 +42,7 @@ export default function Home({ latestComics }) {
           ))}
         </section>
       </main>
+      <Footer />
     </>
   );
 }
