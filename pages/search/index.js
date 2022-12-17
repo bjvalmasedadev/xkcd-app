@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { search } from "services/search";
 
 const Search = ({ query, results }) => {
   return (
@@ -44,9 +45,7 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const { q = "" } = query;
 
-  const results = await fetch("http://localhost:3000//api/search?q=" + q).then(
-    (res) => res.json()
-  );
+  const { results } = await search({ query: q });
 
   // use algolia api to find the results
 
