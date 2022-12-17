@@ -5,8 +5,12 @@ export const Header = () => {
   const [results, setResults] = useState([]);
   const searchRef = useRef();
 
+  const getValue = () => searchRef.current?.value;
+
   const q = searchRef.current?.value;
   const handleChange = () => {
+    const q = getValue();
+    if (!q) return;
     fetch(`/api/search?q=${q}`)
       .then((res) => res.json())
       .then((searchResults) => {
@@ -43,7 +47,7 @@ export const Header = () => {
                       key="all-results"
                     >
                       <Link
-                        href={`/search?q=${q}`}
+                        href={`/search?q=${getValue()}`}
                         className="italic text-sm font-semibold text-ellipsis overflow-hidden whitespace-nowrap text-gray-400"
                       >
                         See all results
