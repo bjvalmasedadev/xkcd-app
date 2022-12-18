@@ -7,17 +7,21 @@ import { Header } from "../components/Header";
 
 import fs from "node:fs/promises";
 import Layout from "components/Layout";
+import { useI18N } from "context/i18n";
 
 export default function Home({ latestComics }) {
+  const { t } = useI18N();
+  console.log(t("LATESTS_COMICS"));
   return (
     <>
       <Head>
-        <title>xkcd - Comics for developers</title>
         <meta name="description" content="Comics for developers" />
       </Head>
 
       <Layout>
-        <h2 className="text-3xl font-bold text-center mb-10">Latest Comics</h2>
+        <h2 className="text-3xl font-bold text-center mb-10">
+          {t("LATEST_COMICS")}
+        </h2>
         <section className="grid grid-cols-1 gap-4 max-w-md m-auto sm:grid-cols-2 md:grid-cols-3">
           {latestComics.map((comic) => (
             <Link

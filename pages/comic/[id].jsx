@@ -4,7 +4,7 @@ import { Header } from "components/Header";
 import Image from "next/image";
 import Link from "next/link";
 import { readFile, stat, readdir } from "fs/promises";
-import { basename } from "path";
+import path, { basename } from "path";
 
 const Comic = ({
   id,
@@ -65,12 +65,17 @@ const Comic = ({
   );
 };
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const files = await readdir("./comics");
+  let paths = [];
 
-  const paths = files.map((file) => {
-    const fileName = basename(file, ".json");
-    return { params: { id: fileName } };
+  locales.forEach((locale) => {
+    paths = paths.concat(
+      files.map((file) => {
+        const fileName = basename(file, ".json");
+        return { params: { id: fileName, locale } };
+      })
+    );
   });
 
   return {
