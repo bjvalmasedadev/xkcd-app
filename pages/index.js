@@ -11,7 +11,6 @@ import { useI18N } from "context/i18n";
 
 export default function Home({ latestComics }) {
   const { t } = useI18N();
-  console.log(t("LATESTS_COMICS"));
   return (
     <>
       <Head>
