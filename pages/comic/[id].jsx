@@ -73,7 +73,7 @@ export async function getStaticPaths({ locales }) {
     paths = paths.concat(
       files.map((file) => {
         const fileName = basename(file, ".json");
-        return { params: { id: fileName, locale } };
+        return { params: { id: fileName }, locale };
       })
     );
   });
